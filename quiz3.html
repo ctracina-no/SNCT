@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="shortcut icon" href="img/gender-female-bold.png" type="image/x-icon">
+
+    <title>Quiz 3 - Corrida pela Ciência</title>
+</head>
+
+<body class="min-h-screen bg-slate-100 text-slate-800">
+
+    <header class="bg-purple-800 text-white shadow-lg">
+        <div class="mx-auto flex max-w-285 flex-col items-center justify-between gap-4 px-6 py-5 sm:flex-row">
+
+            <div>
+                <p class="text-sm font-semibold text-purple-200">
+                    IFSP Câmpus Caraguatatuba
+                </p>
+
+                <h1 class="text-2xl font-bold">
+                    Elas na Ciência e na Tecnologia
+                </h1>
+
+                <p class="mt-1 text-sm text-purple-200">
+                    Semana Nacional de Ciência e Tecnologia 2026
+                </p>
+            </div>
+
+            <a href="index.html#quizes"
+                class="rounded-xl bg-white px-5 py-3 font-semibold text-purple-800 transition hover:bg-purple-100">
+                Voltar aos quizzes
+            </a>
+
+        </div>
+    </header>
+
+    <main class="mx-auto max-w-3xl px-6 py-12">
+
+        <section class="rounded-2xl bg-white p-6 shadow-lg sm:p-10">
+
+            <div class="mb-6">
+                <span class="rounded-full bg-purple-100 px-4 py-2 text-sm font-semibold text-purple-800">
+                    Quiz 3
+                </span>
+
+                <h2 class="mt-5 text-3xl font-bold text-purple-900">
+                    Corrida pela Ciência
+                </h2>
+
+                <p class="mt-3 leading-relaxed text-slate-600">
+                    A pista tem 50 casas. Administre sua energia,
+                    escolha suas ações com cuidado e vença a cientista Alex.
+                    Cada decisão pode mudar o resultado!
+                </p>
+            </div>
+
+            <div class="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+
+                <div class="rounded-xl bg-purple-50 p-3 text-center">
+                    <p class="text-sm font-semibold text-slate-600">Rodada</p>
+                    <p id="rodada" class="text-2xl font-extrabold text-purple-900">0</p>
+                </div>
+
+                <div class="rounded-xl bg-purple-50 p-3 text-center">
+                    <p class="text-sm font-semibold text-slate-600">Meta</p>
+                    <p class="text-2xl font-extrabold text-purple-900">50</p>
+                </div>
+
+                <div class="rounded-xl bg-purple-50 p-3 text-center">
+                    <p class="text-sm font-semibold text-slate-600">Sua energia</p>
+                    <p id="energiaJogador" class="text-2xl font-extrabold text-purple-900">100</p>
+                </div>
+
+                <div class="rounded-xl bg-pink-50 p-3 text-center">
+                    <p class="text-sm font-semibold text-slate-600">Energia de Alex</p>
+                    <p id="energiaAlex" class="text-2xl font-extrabold text-pink-700">100</p>
+                </div>
+
+            </div>
+
+            <div class="mb-7">
+
+                <div class="mb-2 flex items-center justify-between gap-2">
+                    <h3 class="text-lg font-bold text-purple-900">Você</h3>
+                    <span id="posicaoJogador" class="text-sm font-semibold text-purple-800">
+                        0 / 50
+                    </span>
+                </div>
+
+                <div class="h-3 w-full overflow-hidden rounded-full bg-slate-200"
+                    role="progressbar" aria-label="Progresso do jogador"
+                    aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
+
+                    <div id="barraJogador"
+                        class="h-full rounded-full bg-purple-600 transition-all duration-500"
+                        style="width: 0%">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="mb-8">
+
+                <div class="mb-2 flex items-center justify-between gap-2">
+                    <h3 class="text-lg font-bold text-purple-900">Alex, a cientista</h3>
+                    <span id="posicaoAlex" class="text-sm font-semibold text-pink-700">
+                        0 / 50
+                    </span>
+                </div>
+
+                <div class="h-3 w-full overflow-hidden rounded-full bg-slate-200"
+                    role="progressbar" aria-label="Progresso de Alex"
+                    aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
+
+                    <div id="barraAlex"
+                        class="h-full rounded-full bg-pink-500 transition-all duration-500"
+                        style="width: 0%">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="areaJogo" class="rounded-xl border border-purple-200 p-5">
+
+                <h3 class="mb-2 text-xl font-extrabold text-purple-900">
+                    Escolha sua estratégia
+                </h3>
+
+                <p class="mb-4 text-sm leading-relaxed text-slate-600">
+                    Cada ação tem um custo e um benefício. Pense antes de decidir!
+                </p>
+
+                <label for="acao" class="mb-2 block font-semibold text-slate-700">
+                    Qual será sua ação neste turno?
+                </label>
+
+                <select id="acao"
+                    class="mb-3 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-slate-800 outline-none transition focus:border-purple-600 focus:ring-2 focus:ring-purple-200">
+
+                    <option value="segura">
+                        Avançar com segurança — +4 casas, sem gastar energia
+                    </option>
+
+                    <option value="acelerar">
+                        Acelerar — +9 casas, gasta 30 de energia
+                    </option>
+
+                    <option value="recuperar">
+                        Recuperar energia — +25 de energia, sem avançar
+                    </option>
+
+                </select>
+
+                <p class="mb-4 text-sm text-slate-500">
+                    A energia máxima é 100. Acelerar exige pelo menos
+                    30 pontos de energia.
+                </p>
+
+                <button id="btnAvancar" type="button"
+                    class="w-full rounded-xl bg-purple-700 px-5 py-3 font-bold text-white transition hover:bg-purple-800">
+                    Confirmar ação
+                </button>
+
+            </div>
+
+            <div id="mensagem" aria-live="polite"
+                class="mt-6 rounded-xl border border-purple-200 bg-purple-50 p-4 text-center leading-relaxed text-slate-700">
+
+                A corrida está prestes a começar. Escolha sua primeira ação!
+
+            </div>
+
+            <div id="resultado"
+                class="mt-6 hidden rounded-xl bg-purple-50 p-5 text-center">
+
+                <h3 id="tituloResultado"
+                    class="mb-3 text-2xl font-extrabold text-purple-900">
+                    Resultado
+                </h3>
+
+                <p id="textoResultado" class="mb-3 leading-relaxed text-slate-700"></p>
+
+                <p id="classificacao"
+                    class="mb-4 font-bold text-purple-800">
+                </p>
+
+                <button id="btnReiniciar" type="button"
+                    class="w-full rounded-xl bg-purple-700 px-5 py-3 font-bold text-white transition hover:bg-purple-800">
+                    Jogar novamente
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="mt-8 bg-purple-900 px-6 py-6 text-center text-sm text-purple-100">
+        <p>Semana Nacional de Ciência e Tecnologia 2026</p>
+        <p class="mt-1">Elas na Ciência e na Tecnologia</p>
+    </footer>
+
+    <script src="JS/quiz3.js"></script>
+</body>
+
+</html>
