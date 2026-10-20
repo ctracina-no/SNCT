@@ -1,46 +1,40 @@
-const aceiteLGPD = document.getElementById("aceiteLGPD");
-    const botaoAceitar = document.getElementById("botaoAceitar");
-    const botaoRecusar = document.getElementById("botaoRecusar");
+const formCadastro = document.getElementById("formCadastro");
+        const botaoEnviar = document.getElementById("botaoEnviar");
+        const mensagemSucesso = document.getElementById("mensagemSucesso");
+        const avisoEnvio = document.getElementById("avisoEnvio");
+        const envioForms = document.getElementById("envioForms");
 
-    const etapaConsentimento =
-        document.getElementById("etapaConsentimento");
+        let enviando = false;
 
-    const mensagemRecusa =
-        document.getElementById("mensagemRecusa");
+        formCadastro.addEventListener("submit", function (evento) {
+            if (enviando) {
+                evento.preventDefault();
+                return;
+            }
 
-    const formCadastro =
-        document.getElementById("formCadastro");
+            // A validação dos campos obrigatórios é feita pelo navegador.
+            enviando = true;
 
-    const avisoEnvio =
-        document.getElementById("avisoEnvio");
+            botaoEnviar.disabled = true;
+            botaoEnviar.textContent = "Enviando...";
+            botaoEnviar.classList.add("opacity-60", "cursor-not-allowed");
 
-    // Só mostra o cadastro se o visitante marcar o aceite.
-    botaoAceitar.addEventListener("click", function () {
-        if (!aceiteLGPD.checked) {
-            alert("Leia a declaração e marque a opção de aceite.");
-            return;
-        }
+            avisoEnvio.classList.add("hidden");
 
-        etapaConsentimento.classList.add("hidden");
-        formCadastro.classList.remove("hidden");
+            // O formulário é enviado ao Google Forms pelo iframe.
+            // Aguardar um intervalo reduz a chance de redirecionar cedo demais.
+            setTimeout(function () {
+                formCadastro.classList.add("hidden");
+                mensagemSucesso.classList.remove("hidden");
 
-        document.getElementById("nomeVisitante").focus();
-    });
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
 
-    // Se recusar, encerra o fluxo sem exibir as perguntas.
-    botaoRecusar.addEventListener("click", function () {
-        etapaConsentimento.classList.add("hidden");
-        formCadastro.classList.add("hidden");
-        mensagemRecusa.classList.remove("hidden");
-    });
+                setTimeout(function () {
+                    window.location.href = "index.html";
+                }, 2000);
 
-    // Por enquanto, impede um envio que ainda não foi configurado.
-    formCadastro.addEventListener("submit", function (evento) {
-        evento.preventDefault();
-
-        avisoEnvio.textContent =
-            "O formulário visual está pronto, mas ainda falta " +
-            "configurar o envio dos dados ao Google Forms.";
-
-        avisoEnvio.classList.remove("hidden");
-    });
+            }, 2500);
+        });
