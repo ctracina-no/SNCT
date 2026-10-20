@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="shortcut icon" href="img/gender-female-bold.png" type="image/x-icon">
+    <title>Semana Nacional de Ciência e Tecnologia</title>
+</head>
+
+<body class="bg-sky-50 text-black">
+
+    <div class="bg-sky-300">
+
+        <div class=" max-w-285 mx-auto px-6 flex justify-between items-center gap-3 flex-wrap py-1.5">
+            <span class="font-semibold">Instituto Federal de Educação, Ciência e Tecnologia de São Paulo . Câmpus
+                Caraguatatuba</span>
+
+            <span
+                class="bg-purple-800 text-white font-bold px-2.5 py-0.5 rounded-full text-[0.72rem] tracking-wide">Semana
+                Nacional de Ciência e Tecnologia</span>
+        </div>
+    </div>
+    <header class="bg-white border-t-4 border-purple-800">
+        <div class="max-w-285 mx-auto px-6 flex items-center gap-4 py-4.5 rounded justify-between">
+            <div class="flex items-center gap-4 rounded">
+                <div
+                    class="w-13.5 h-13.5 rounded-xl flex items-center justify-center text-white font-extrabold text-[1.05rem] tracking-wide shrink-0 bg-purple-800">
+                    SNCT</div>
+
+                <div>
+                    <h1 class="m-0 text-lg font-extrabold text-black">Semana Nacional de Ciência e Tecnologia</h1>
+                    <p class="mt-0.5 mb-0 text-sm text-slate-600">Venha ver curiosidades e quizes sobre mulheres na
+                        ciência</p>
+                </div>
+            </div>
+            <div>
+                <a href="index.html"
+                    class="inline-block bg-purple-800 hover:bg-purple-900 text-white font-semibold text-sm px-4 py-2.5 rounded-lg no-underline transition">
+                    Voltar ao site →</a>
+            </div>
+        </div>
+
+    </header>
+
+    <section
+        class="bg-linear-to-br from-purple-400 to-purple-600 text-white py-16 md:py-20 pb-16 md:pb-19 relative overflow-hidden"
+        id="inicio">
+        <div class="max-w-285 mx-auto px-6 grid grid-cols-1 md:grid-cols-[1.15fr_0.85fr] gap-10 items-center">
+            <div>
+                <span
+                    class="inline-block bg-purple-100/15 px-3.5 py-1.5 rounded-full text-sm font-semibold mb-4.5 border border-purple-100/30">
+                    CADASTRO DE VISITANTES</span>
+
+                <h2 class="text-4xl leading-tight m-0 mb-4 font-extrabold">Registre sua visita</h2>
+
+                <p class="text-lg text-[#dcece2] max-w-[46ch] m-0 mb-7.5">Preencha o cadastro para registramos sua
+                    participação na Semana Nacional de Ciência e Tecnologia</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="etapaConssetimento" class="bg-white border border-slate-200 rounded-xl p-6 shadow-md">
+
+        <h4 class="text-xl font-bold text-purple-800 mb-4">
+            Declaração de Consentimento e Privacidade (LGPD)
+        </h4>
+
+        <p class="text-slate-700 mb-4">
+            Ao preencher e enviar este formulário, eu (visitante),
+            ou meu responsável legal, autorizo o IFSP Campus
+            Caraguatatuba a coletar e tratar os dados para a
+            seguinte finalidade:
+        </p>
+
+        <p class="font-bold text-slate-900 mb-2">
+            Controle e estatística
+        </p>
+
+        <p class="text-slate-700 mb-4">
+            Registrar sua presença no evento, contabilizar o número
+            total de visitantes e analisar o perfil geral do público
+            para o planejamento e melhoria de futuras edições.
+        </p>
+
+        <p class="text-slate-700 mb-4">
+            Os dados coletados serão utilizados exclusivamente
+            para fins de análise interna e relatórios estatísticos,
+            armazenados em ambiente seguro e não serão compartilhados
+            com terceiros nem utilizados para envio de publicidade.
+        </p>
+
+        <p class="text-slate-700 mb-5">
+            A exclusão dos dados ou a revogação deste consentimento
+            pode ser solicitada pelo e-mail:
+            <strong>[INSIRA O E-MAIL OFICIAL]</strong>.
+        </p>
+
+        <!-- O visitante manifesta sua decisão aqui -->
+        <label class="flex items-start gap-3 cursor-pointer mb-6">
+            <input type="checkbox" id="aceiteLGPD" class="mt-1 accent-purple-800 w-4 h-4 shrink-0">
+
+            <span class="text-slate-800 text-sm">
+                Declaro que li os termos e, sendo maior de idade
+                ou estando autorizado pelos meus pais/responsáveis,
+                aceito o tratamento dos meus dados.
+            </span>
+        </label>
+
+        <div class="flex flex-wrap gap-3">
+            <button type="button" id="botaoAceitar" class="bg-purple-800 hover:bg-purple-900
+                           text-white font-semibold rounded-lg
+                           px-5 py-3 transition">
+                Aceito e continuar
+            </button>
+
+            <button type="button" id="botaoRecusar" class="border border-slate-300 hover:bg-slate-100
+                           text-slate-800 font-semibold rounded-lg
+                           px-5 py-3 transition">
+                Não aceito
+            </button>
+        </div>
+    </div>
+
+    <!-- MENSAGEM EXIBIDA QUANDO O VISITANTE RECUSA -->
+    <div id="mensagemRecusa" class="hidden bg-white border border-slate-200
+                    rounded-xl p-6 shadow-md" role="status">
+
+        <h4 class="text-xl font-bold text-slate-900 mb-3">
+            Obrigado pela sua visita!
+        </h4>
+
+        <p class="text-slate-700">
+            Respeitamos sua decisão. Desejamos a você um ótimo evento!
+        </p>
+    </div>
+
+    <!-- SEGUNDA ETAPA: CADASTRO -->
+    <form id="formCadastro" class="hidden bg-white border border-slate-200
+                     rounded-xl p-6 shadow-md space-y-5">
+
+        <h4 class="text-xl font-bold text-purple-800">
+            Dados do visitante
+        </h4>
+
+        <div>
+            <label for="nomeVisitante" class="block font-semibold text-slate-800 mb-2">
+                Nome completo do visitante
+            </label>
+
+            <input type="text" id="nomeVisitante" name="nomeVisitante" required autocomplete="name" class="w-full border border-slate-300 rounded-lg
+                           px-4 py-3 focus:outline-none
+                           focus:ring-2 focus:ring-purple-700" placeholder="Digite seu nome">
+        </div>
+
+        <div>
+            <label for="nomeResponsavel" class="block font-semibold text-slate-800 mb-2">
+                Nome do responsável legal (se aplicável)
+            </label>
+
+            <input type="text" id="nomeResponsavel" name="nomeResponsavel" autocomplete="off" class="w-full border border-slate-300 rounded-lg
+                           px-4 py-3 focus:outline-none
+                           focus:ring-2 focus:ring-purple-700" placeholder="Nome do responsável">
+        </div>
+
+        <div>
+            <label for="instituicao" class="block font-semibold text-slate-800 mb-2">
+                Escola ou instituição (se aplicável)
+            </label>
+
+            <input type="text" id="instituicao" name="instituicao" class="w-full border border-slate-300 rounded-lg
+                           px-4 py-3 focus:outline-none
+                           focus:ring-2 focus:ring-purple-700" placeholder="Nome da escola ou instituição">
+        </div>
+
+        <div>
+            <label for="cidade" class="block font-semibold text-slate-800 mb-2">
+                Cidade onde reside
+            </label>
+
+            <input type="text" id="cidade" name="cidade" required autocomplete="address-level2" class="w-full border border-slate-300 rounded-lg
+                           px-4 py-3 focus:outline-none
+                           focus:ring-2 focus:ring-purple-700" placeholder="Digite sua cidade">
+        </div>
+
+        <button type="submit" class="w-full bg-purple-800 hover:bg-purple-900
+                       text-white font-bold rounded-lg px-5 py-3
+                       transition">
+            Enviar cadastro
+        </button>
+
+        <p id="avisoEnvio" class="hidden text-sm text-slate-700" role="status">
+        </p>
+    </form>
+
+    </div>
+    </section>
+
+</body>
+
+<script>
+    const aceiteLGPD = document.getElementById("aceiteLGPD");
+    const botaoAceitar = document.getElementById("botaoAceitar");
+    const botaoRecusar = document.getElementById("botaoRecusar");
+
+    const etapaConsentimento =
+        document.getElementById("etapaConsentimento");
+
+    const mensagemRecusa =
+        document.getElementById("mensagemRecusa");
+
+    const formCadastro =
+        document.getElementById("formCadastro");
+
+    const avisoEnvio =
+        document.getElementById("avisoEnvio");
+
+    // Só mostra o cadastro se o visitante marcar o aceite.
+    botaoAceitar.addEventListener("click", function () {
+        if (!aceiteLGPD.checked) {
+            alert("Leia a declaração e marque a opção de aceite.");
+            return;
+        }
+
+        etapaConsentimento.classList.add("hidden");
+        formCadastro.classList.remove("hidden");
+
+        document.getElementById("nomeVisitante").focus();
+    });
+
+    // Se recusar, encerra o fluxo sem exibir as perguntas.
+    botaoRecusar.addEventListener("click", function () {
+        etapaConsentimento.classList.add("hidden");
+        formCadastro.classList.add("hidden");
+        mensagemRecusa.classList.remove("hidden");
+    });
+
+    // Por enquanto, impede um envio que ainda não foi configurado.
+    formCadastro.addEventListener("submit", function (evento) {
+        evento.preventDefault();
+
+        avisoEnvio.textContent =
+            "O formulário visual está pronto, mas ainda falta " +
+            "configurar o envio dos dados ao Google Forms.";
+
+        avisoEnvio.classList.remove("hidden");
+    });
+</script>
+
+</html>
