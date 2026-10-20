@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Corrida pela Ciência</title>
+
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="shortcut icon" href="img/gender-female-bold.png">
+
+</head>
+
+<body class="min-h-screen bg-purple-100 text-purple-950 flex flex-col">
+
+    <header class="bg-purple-800 text-white p-5 shadow-md">
+        <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
+            <a href="index.html#quizes" class="text-white no-underline hover:text-purple-200">
+                ← Voltar
+            </a>
+
+            <h1 class="text-lg md:text-2xl font-extrabold text-center">
+                Corrida pela Ciência
+            </h1>
+
+            <span class="text-sm font-bold">Quiz 3</span>
+        </div>
+    </header>
+
+    <main class="flex-1 w-full max-w-4xl mx-auto p-5 md:p-8">
+
+        <section class="bg-white rounded-2xl shadow-md p-5 md:p-8">
+
+            <div class="text-center mb-6">
+                <p class="text-purple-800 font-bold text-sm mb-2">
+                    DESAFIO ESTRATÉGICO
+                </p>
+
+                <h2 class="text-2xl md:text-3xl font-extrabold mb-3">
+                    Vença a corrida!
+                </h2>
+
+                <p class="text-slate-600">
+                    A pista tem 50 casas. Administre sua energia,
+                    escolha suas ações com cuidado e vença a cientista Alex.
+                    Cada decisão pode mudar o resultado!
+                </p>
+            </div>
+
+            <!-- Painel de informações -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+
+                <div class="bg-purple-100 rounded-xl p-3 text-center">
+                    <p class="text-sm font-semibold">Rodada</p>
+                    <p id="rodada" class="text-2xl font-extrabold">0</p>
+                </div>
+
+                <div class="bg-purple-100 rounded-xl p-3 text-center">
+                    <p class="text-sm font-semibold">Meta</p>
+                    <p class="text-2xl font-extrabold">50</p>
+                </div>
+
+                <div class="bg-purple-100 rounded-xl p-3 text-center">
+                    <p class="text-sm font-semibold">Sua energia</p>
+                    <p id="energiaJogador" class="text-2xl font-extrabold">100</p>
+                </div>
+
+                <div class="bg-pink-100 rounded-xl p-3 text-center">
+                    <p class="text-sm font-semibold">Energia de Alex</p>
+                    <p id="energiaAlex" class="text-2xl font-extrabold">100</p>
+                </div>
+
+            </div>
+
+            <!-- Pista do jogador -->
+            <div class="mb-7">
+                <div class="flex justify-between items-center mb-2 gap-2">
+                    <h3 class="font-bold text-lg">Você</h3>
+                    <span id="posicaoJogador"
+                        class="text-sm font-semibold text-purple-800">0 / 50</span>
+                </div>
+
+                <div class="w-full h-8 bg-slate-200 rounded-full overflow-hidden">
+                    <div id="barraJogador"
+                        class="h-full bg-purple-700 rounded-full transition-all duration-500"
+                        style="width: 0%">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pista da adversária -->
+            <div class="mb-8">
+                <div class="flex justify-between items-center mb-2 gap-2">
+                    <h3 class="font-bold text-lg">Alex, a cientista</h3>
+                    <span id="posicaoAlex"
+                        class="text-sm font-semibold text-pink-700">0 / 50</span>
+                </div>
+
+                <div class="w-full h-8 bg-slate-200 rounded-full overflow-hidden">
+                    <div id="barraAlex"
+                        class="h-full bg-pink-500 rounded-full transition-all duration-500"
+                        style="width: 0%">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Escolha de estratégia -->
+            <div id="areaJogo" class="border border-purple-200 rounded-xl p-4 md:p-5">
+
+                <h3 class="font-extrabold text-xl mb-2">
+                    Escolha sua estratégia
+                </h3>
+
+                <p class="text-slate-600 text-sm mb-4">
+                    Cada ação tem um custo e um benefício. Pense antes de decidir!
+                </p>
+
+                <label for="acao" class="block font-bold mb-2">
+                    Qual será sua ação neste turno?
+                </label>
+
+                <select id="acao"
+                    class="w-full border border-slate-300 rounded-xl p-3 mb-3 bg-white text-slate-800">
+
+                    <option value="segura">
+                        Avançar com segurança — +4 casas, sem gastar energia
+                    </option>
+
+                    <option value="acelerar">
+                        Acelerar — +9 casas, gasta 30 de energia
+                    </option>
+
+                    <option value="recuperar">
+                        Recuperar energia — +25 de energia, sem avançar
+                    </option>
+
+                </select>
+
+                <p class="text-sm text-slate-500 mb-4">
+                    A energia máxima é 100. Acelerar exige pelo menos
+                    30 pontos de energia.
+                </p>
+
+                <button id="btnAvancar"
+                    type="button"
+                    class="w-full bg-purple-800 hover:bg-purple-900 text-white font-bold rounded-xl p-3 transition">
+                    Confirmar ação
+                </button>
+
+            </div>
+
+            <!-- Mensagens da partida -->
+            <div id="mensagem"
+                aria-live="polite"
+                class="mt-6 p-4 bg-purple-50 border border-purple-200 rounded-xl text-center text-slate-700">
+
+                A corrida está prestes a começar. Escolha sua primeira ação!
+            </div>
+
+            <!-- Resultado -->
+            <div id="resultado"
+                class="hidden mt-6 p-5 rounded-xl bg-purple-100 text-center">
+
+                <h3 id="tituloResultado"
+                    class="text-2xl font-extrabold mb-3">
+                    Resultado
+                </h3>
+
+                <p id="textoResultado" class="mb-3"></p>
+
+                <p id="classificacao"
+                    class="font-bold text-purple-800 mb-4">
+                </p>
+
+                <button id="btnReiniciar"
+                    type="button"
+                    class="w-full bg-purple-800 hover:bg-purple-900 text-white font-bold rounded-xl p-3 transition">
+                    Jogar novamente
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="bg-purple-800 text-white text-center p-4 mt-8">
+        <p class="text-sm">
+            Elas na Ciência e na Tecnologia — SNCT 2026
+        </p>
+    </footer>
+
+    <script src="JS/quiz3.js"></script>
+</body>
+</html>
