@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Você decide: carreira científica | Elas na Ciência</title>
+
+    <link rel="stylesheet" href="dist/output.css">
+    <link rel="shortcut icon" href="img/gender-female-bold.png" type="image/png">
+
+</head>
+
+<body class="min-h-screen bg-[#9C6CB3] text-[#2E1437]">
+
+    <header class="bg-[#81549B] text-white px-5 py-6">
+        <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-between gap-4">
+            <a href="index.html" class="text-white font-bold no-underline hover:underline">
+                ← Voltar ao início
+            </a>
+
+            <span class="text-sm font-semibold">
+                Elas na Ciência e na Tecnologia
+            </span>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 py-10">
+
+        <section class="bg-white rounded-2xl shadow-lg p-6 sm:p-8">
+
+            <div class="text-center mb-8">
+                <p class="text-purple-800 font-bold text-sm mb-2">
+                    DESAFIO 5
+                </p>
+
+                <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">
+                    Você decide: carreira científica
+                </h1>
+
+                <p class="text-slate-600">
+                    Suas decisões podem transformar uma ideia em uma grande
+                    descoberta. Administre seus recursos e conduza sua pesquisa!
+                </p>
+            </div>
+
+            <div id="areaIntroducao">
+
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-6 mb-6">
+                    <h2 class="font-extrabold text-xl mb-3">
+                        Uma nova jornada começa
+                    </h2>
+
+                    <p class="text-slate-700 leading-relaxed">
+                        Você é uma jovem pesquisadora que recebeu recursos
+                        limitados para investigar uma possível solução para
+                        um problema ambiental. Ao longo do projeto, precisará
+                        escolher como pesquisar, administrar o orçamento e
+                        lidar com imprevistos.
+                    </p>
+                </div>
+
+                <button id="botaoIniciar" type="button"
+                    class="w-full bg-purple-700 hover:bg-purple-800 hover:cursor-pointer text-white font-bold py-4 px-5 rounded-xl transition">
+                    Começar a pesquisa
+                </button>
+
+            </div>
+
+            <div id="areaAventura" class="hidden">
+
+                <div class="grid grid-cols-3 gap-3 mb-6">
+
+                    <div class="bg-purple-50 rounded-xl p-3 text-center">
+                        <p class="text-xs text-slate-600 mb-1">Orçamento</p>
+                        <p id="valorOrcamento" class="font-extrabold text-lg">
+                            100
+                        </p>
+                    </div>
+
+                    <div class="bg-purple-50 rounded-xl p-3 text-center">
+                        <p class="text-xs text-slate-600 mb-1">Tempo</p>
+                        <p id="valorTempo" class="font-extrabold text-lg">
+                            10
+                        </p>
+                    </div>
+
+                    <div class="bg-purple-50 rounded-xl p-3 text-center">
+                        <p class="text-xs text-slate-600 mb-1">Qualidade</p>
+                        <p id="valorQualidade" class="font-extrabold text-lg">
+                            0
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="mb-3 flex justify-between items-center gap-4">
+                    <p id="etapaAtual" class="font-bold text-sm">
+                        Etapa 1 de 5
+                    </p>
+
+                    <p class="text-sm text-slate-500">
+                        Faça sua escolha
+                    </p>
+                </div>
+
+                <div class="w-full h-3 bg-purple-100 rounded-full mb-6">
+                    <div id="barraProgresso" class="h-3 bg-purple-700 rounded-full transition-all duration-300"
+                        style="width: 0%">
+                    </div>
+                </div>
+
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-6 mb-6">
+
+                    <h2 id="tituloEtapa" class="text-xl font-extrabold mb-3">
+                    </h2>
+
+                    <p id="textoHistoria" class="text-slate-700 leading-relaxed">
+                    </p>
+
+                </div>
+
+                <p id="feedback" class="font-semibold text-center mb-5" aria-live="polite">
+                </p>
+
+                <div id="opcoes" class="flex flex-col gap-3">
+                </div>
+
+            </div>
+
+            <div id="areaResultado" class="hidden text-center">
+
+                <div class="bg-purple-50 border border-purple-200 rounded-xl p-6 mb-6">
+
+                    <h2 class="text-2xl font-extrabold mb-4">
+                        Fim da aventura!
+                    </h2>
+
+                    <p id="tituloFinal" class="text-xl font-bold text-purple-800 mb-3">
+                    </p>
+
+                    <p id="textoFinal" class="text-slate-700 leading-relaxed">
+                    </p>
+
+                </div>
+
+                <div class="grid grid-cols-3 gap-3 mb-6">
+
+                    <div class="bg-purple-50 rounded-xl p-3">
+                        <p class="text-xs text-slate-600 mb-1">Orçamento</p>
+                        <p id="resultadoOrcamento" class="font-extrabold text-lg"></p>
+                    </div>
+
+                    <div class="bg-purple-50 rounded-xl p-3">
+                        <p class="text-xs text-slate-600 mb-1">Tempo restante</p>
+                        <p id="resultadoTempo" class="font-extrabold text-lg"></p>
+                    </div>
+
+                    <div class="bg-purple-50 rounded-xl p-3">
+                        <p class="text-xs text-slate-600 mb-1">Qualidade</p>
+                        <p id="resultadoQualidade" class="font-extrabold text-lg"></p>
+                    </div>
+
+                </div>
+
+                <button id="botaoReiniciar" type="button"
+                    class="w-full bg-purple-700 hover:bg-purple-800 text-white font-bold py-4 px-5 rounded-xl transition">
+                    Tentar novamente
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="text-center text-white text-sm px-4 pb-8">
+        Elas na Ciência e na Tecnologia — SNCT 2026
+    </footer>
+
+    <script src="JS/quiz5.js" defer></script>
+</body>
+
+</html>
